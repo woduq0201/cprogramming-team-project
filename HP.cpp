@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "1.h"
+#include <Windows.h>
 
 void HP(int* myHP,int* enemyHP)
 {

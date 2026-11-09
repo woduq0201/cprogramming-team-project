@@ -1,7 +1,8 @@
-Ôªø#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 #include "1.h"
+#include <Windows.h>
 
 int Setbullet(int* allbullet, int* livebullet, int* blankbullet)
 { 
@@ -13,43 +14,43 @@ int Setbullet(int* allbullet, int* livebullet, int* blankbullet)
         goto THREE;
 
 ONE:
-    *allbullet = rand() % 4 + 2;                     // 2~5Î∞ú
+    *allbullet = rand() % 4 + 2;                     // 2~5πﬂ
     if (*allbullet == 5)
-        *livebullet = rand() % 2 + 2;                // 2 or 3Î∞ú
+        *livebullet = rand() % 2 + 2;                // 2 or 3πﬂ
     else
-        *livebullet = rand() % (*allbullet - 1) + 1;  // Ï¥ù 4Î∞úÏù¥ÌïòÏóêÏÑú ÏµúÏÜå 1Î∞ú 
+        *livebullet = rand() % (*allbullet - 1) + 1;  // √— 4πﬂ¿Ã«œø°º≠ √÷º“ 1πﬂ 
     *blankbullet = *allbullet - *livebullet;
     goto END;
 
 TWO:
-    *allbullet = rand() % 5 + 4;                    // 4~8Î∞ú
+    *allbullet = rand() % 5 + 4;                    // 4~8πﬂ
     if (*allbullet == 4)
-        *livebullet = rand() % (*allbullet - 1) + 1; // 1~3Î∞ú
+        *livebullet = rand() % (*allbullet - 1) + 1; // 1~3πﬂ
     else if (*allbullet == 5)
-        *livebullet = rand() % 2 + 2;               // 2 or 3Î∞ú
+        *livebullet = rand() % 2 + 2;               // 2 or 3πﬂ
     else if (*allbullet == 6)
-        *livebullet = rand() % 3 + 2;               // 2~4Î∞ú
+        *livebullet = rand() % 3 + 2;               // 2~4πﬂ
     else if (*allbullet == 7)
-        *livebullet = rand() % 4 + 2;               // 2~5Î∞ú
+        *livebullet = rand() % 4 + 2;               // 2~5πﬂ
     else
-        *livebullet = rand() % 3 + 3;               // Ï¥ù 8Î∞úÏùºÎïå 3~5Î∞ú
+        *livebullet = rand() % 3 + 3;               // √— 8πﬂ¿œ∂ß 3~5πﬂ
     *blankbullet = *allbullet - *livebullet;
     goto END;
 
 THREE:
-    *allbullet = rand() % 6 + 5;                    // 5~10Î∞ú
+    *allbullet = rand() % 6 + 5;                    // 5~10πﬂ
     if (*allbullet == 5)
-        *livebullet = rand() % 2 + 2;               // 2 or 3Î∞ú
+        *livebullet = rand() % 2 + 2;               // 2 or 3πﬂ
     else if (*allbullet == 6)
-        *livebullet = rand() % 3 + 2;               // 2~4Î∞ú
+        *livebullet = rand() % 3 + 2;               // 2~4πﬂ
     else if (*allbullet == 7)
-        *livebullet = rand() % 4 + 2;               // 2~5Î∞ú
+        *livebullet = rand() % 4 + 2;               // 2~5πﬂ
     else if (*allbullet == 8)
-        *livebullet = rand() % 3 + 3;               // 3~5Î∞ú
+        *livebullet = rand() % 3 + 3;               // 3~5πﬂ
     else if (*allbullet == 9)
-        *livebullet = rand() % 3 + 4;               // 4~6Î∞ú
+        *livebullet = rand() % 3 + 4;               // 4~6πﬂ
     else
-        *livebullet = rand() % 3 + 4;              // 4~ 6Î∞ú
+        *livebullet = rand() % 3 + 4;              // 4~ 6πﬂ
     *blankbullet = *allbullet - *livebullet;
     goto END;
 

@@ -2,20 +2,57 @@
 #include <stdlib.h>
 #include <time.h>
 #include "1.h"
+#include <Windows.h>
 
 int round = 1;
 
 int main()
 {
-    srand((unsigned)time(NULL));                                  // ë‹¤ë¥¸ê±°ì—ì„œ ì•ˆì¨ë„ë¨
+    srand((unsigned)time(NULL));                                  // ´Ù¸¥°Å¿¡¼­ ¾È½áµµµÊ
     
-	void HP(int* myHP, int* enemyHP);                             // ì²´ë ¥ ì„¤ì •
-
+    int bullet[10];
     int allbullet, livebullet, blankbullet;
-    Setbullet(&allbullet, &livebullet, &blankbullet);             //ì´ì•Œ ì„¤ì •
+    int myHP, enemyHP;
     
-    int bullet[10] = { 0 };
-    bulletsuffle(bullet, allbullet, livebullet);                  //ì´ì•Œ ì„ì–´ì„œ ì¥ì „
+    round = 1;
 
-    return 0;
+    while (round <= 3)
+    {
+        HP(&myHP, &enemyHP);
+
+        Setbullet(&allbullet, &livebullet, &blankbullet);
+
+        bulletsuffle(bullet, allbullet, livebullet);
+
+		printf("½ÇÅº ¼ö = %d, °øÆ÷Åº ¼ö = %d\n", livebullet, blankbullet);  //ÅØ½ºÆ®¿ë")
+		Sleep(1000);
+
+        firstbullet = 0;
+
+        while (myHP > 0 && enemyHP > 0)
+        {
+            if (firstbullet >= allbullet)
+            {
+                Setbullet(&allbullet, &livebullet, &blankbullet);
+                bulletsuffle(bullet, allbullet, livebullet);
+                firstbullet = 0;
+                printf("½ÇÅº ¼ö = %d, °øÆ÷Åº ¼ö = %d\n", livebullet, blankbullet);  //ÅØ½ºÆ®¿ë")
+            }
+            turn(bullet, &allbullet, &myHP, &enemyHP, livebullet, blankbullet);
+        }
+
+        if (myHP <= 0)
+        {
+            round = 1;
+            T = 1;
+            continue;
+        }
+
+        if (enemyHP <= 0)
+        {
+            round++;
+            continue;
+        }
+    }
+
 }
