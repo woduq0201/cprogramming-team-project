@@ -8,10 +8,10 @@ int firstbullet = 0;
 int active()
 {
 	int select;
-	printf("1: 나, 2: 상대\n");
+	printf("1: 나, 2: 상대\n");                                        // 1 = 자기자신에게 발사 , 2 = 상대에게 발사
 	scanf("%d", &select);
 
-    while (select != 1 && select != 2)
+    while (select != 1 && select != 2)                                 // 다른숫자 입력시 다시 입력
     {
         printf("1: 나, 2: 상대\n");
         scanf("%d", &select);
@@ -22,57 +22,57 @@ int active()
 
 int fire(int bullet[], int *allbullet, int *myHP, int *enemyHP)
 {
-	int select = active();
-	int nowbullet = bullet[firstbullet];
-
-    if (firstbullet >= *allbullet)
+	if (firstbullet >= *allbullet)
         return 0;
 
-    if (select == 1)
+    int select = active();                                            // 입력받은 값을 select로 
+    int nowbullet = bullet[firstbullet];
+
+    if (select == 1)                                                  // 나에게 발사
     {
-        if (bullet[firstbullet] == 1)
+        if (bullet[firstbullet] == 1)                                 //실탄
         {
-			printf("실탄발사\n");						     //텍스트용
+			printf("실탄발사\n");						              //텍스트용
             printf("\n");
             Sleep(1000);
 
             (*myHP)--;
 
-            printf("내 HP = %d\n", *myHP);                   //텍스트용
+            printf("내 HP = %d\n", *myHP);                            //텍스트용
             printf("\n");
             Sleep(1000);
         }
-        else
+        else                                                          //공포탄
         {
             printf("공포탄발사\n");
             printf("\n");
         }
     }
-    else
+    else                                                              // 상대에게 발사
     {
-        if (bullet[firstbullet] == 1)
+        if (bullet[firstbullet] == 1)                                 //실탄
         { 
-            printf("실탄발사\n");						     //텍스트용
+            printf("실탄발사\n");						              //텍스트용
             printf("\n");
             Sleep(1000);
 
             (*enemyHP)--;
-            printf("상대 HP = %d\n", *enemyHP);              //텍스트용
-            printf("\n");
+            printf("상대 HP = %d\n", *enemyHP);                      //텍스트용
+            printf("\n"); 
             Sleep(1000);
         }
-        else
-            printf("공포탄발사\n");						     //텍스트용
+        else                                                         //공포탄
+            printf("공포탄발사\n");						             //텍스트용
         printf("\n");
             Sleep(1000);
     }
 
     firstbullet++;
 
-    if (select == 1 && nowbullet == 0)
-        return 1;
+    if (select == 1 && nowbullet == 0)                             
+        return 1;                             // 나에게 쐈는데 공포탄
     else
-        return 0;
+        return 0;                             // 그외의 경우
 }
 
 int enemyfire(int bullet[],int livebullet, int blankbullet,int* myHP,int *enemyHP)
